@@ -1,11 +1,14 @@
 # Builds the Android app (an installable .apk) from www/ every time something is pushed, or when started by hand
-# from the Actions tab. The file to install is in the run's Artifacts at the bottom of its page.
+# from the Actions tab. The file to install is on the Releases page (and in the run's Artifacts).
 name: Android app
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   apk:
@@ -34,3 +37,11 @@ jobs:
           name: BaseballManager-android
           path: BaseballManager-*.apk
           retention-days: 30
+      # the newest build on the repository's Releases page, so a tablet can download it straight from Chrome
+      - name: Publish on the Releases page
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v=$(node -p "require('./package.json').version")
+          gh release delete latest --yes --cleanup-tag 2>/dev/null || true
+          gh release create latest BaseballManager-*.apk --title "Baseball Manager $v for Android" --notes "Download the .apk on the tablet and tap it to install. Android asks once to allow installing apps from Chrome." --latest
