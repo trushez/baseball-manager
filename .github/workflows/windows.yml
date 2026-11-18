@@ -1,0 +1,41 @@
+# Builds the Windows installer on a Windows machine and puts it on the Releases page (tag "windows"). The desktop
+# game ships with the fictional players; the real players pack in www/data/sets is left out of it.
+name: Windows game
+
+on:
+  push:
+    branches: [main]
+    paths: ['www/**', 'desktop/**', '.github/workflows/windows.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  installer:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: The game files, without the real players
+        shell: bash
+        run: |
+          rm -rf release && cp -r www release && rm -rf release/data/sets
+      - name: Build the installer
+        working-directory: desktop
+        shell: bash
+        run: |
+          npm ci
+          npx electron-builder --win --publish never
+      - name: Publish on the Releases page
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v=$(node -p "require('./desktop/package.json').version")
+          cp "desktop/dist/Baseball Manager Setup $v.exe" "BaseballManager-Setup-$v.exe"
+          gh release delete windows --yes --cleanup-tag 2>/dev/null || true
+          gh release create windows "BaseballManager-Setup-$v.exe" --title "Baseball Manager $v for Windows" --notes "Download and run the installer. Windows may say it protected your PC: click More info, then Run anyway." --latest=false

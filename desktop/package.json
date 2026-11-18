@@ -1,0 +1,83 @@
+{
+  "name": "baseball-manager-desktop",
+  "productName": "Baseball Manager",
+  "version": "0.9.9",
+  "private": true,
+  "description": "Baseball Manager, the desktop game",
+  "author": "Ryder Game Studios",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "release": "node ../tools/build-release.js ../release",
+    "dist": "npm run release && electron-builder --publish never",
+    "dist:win": "npm run release && electron-builder --win --publish never",
+    "dist:mac": "npm run release && electron-builder --mac --publish never",
+    "dist:linux": "npm run release && electron-builder --linux --publish never",
+    "smoke": "node smoke.cjs"
+  },
+  "devDependencies": {
+    "electron": "45.3.3",
+    "electron-builder": "26.18.1"
+  },
+  "build": {
+    "appId": "com.rydergamestudios.baseballmanager",
+    "productName": "Baseball Manager",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "paths.cjs",
+      "package.json",
+      "build/icon.png"
+    ],
+    "extraResources": [
+      {
+        "from": "../release",
+        "to": "game"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Baseball Manager"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "dir"
+      ],
+      "category": "public.app-category.sports-games",
+      "hardenedRuntime": true,
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "dir"
+      ],
+      "category": "Game",
+      "icon": "build/icon.png"
+    },
+    "publish": []
+  }
+}

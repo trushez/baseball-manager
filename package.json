@@ -1,6 +1,6 @@
 {
   "name": "baseball-manager-android",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "private": true,
   "description": "Baseball Manager as an Android app (Capacitor around the web build in www/)",
   "devDependencies": {
