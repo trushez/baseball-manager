@@ -1,0 +1,31 @@
+/* Design tokens. Plain system fonts, a neutral graphite base and flat controls. ui/theme.js overrides the club-coloured ones (sidebar, tabs, accent) for the club you manage. */
+:root {
+  --page: #121314;        /* behind everything */
+  --side: #26303d;        /* left sidebar */
+  --side-line: #3c4857;
+  --side-hover: #313d4d;
+  --title: #2a3a52;       /* title bars */
+  --title-line: #4a5d7a;
+  --panel: #181a1c;       /* content panels */
+  --panel-2: #1f2225;     /* alternate rows, inset boxes */
+  --line: #34383b;        /* panel borders and grid lines */
+  --tab: #1d2430;
+  --tab-hover: #29354a;
+
+  --white: #ffffff;
+  --text: #e4e6e7;
+  --soft: #9aa0a4;
+  --yellow: #e2864a;
+  --good: #5fd48a; --bad: #f0786c; /* fixed: attribute greens and reds, not changed by the club theme */
+  --green: #7fd1a0;
+  --red: #ee8a80;
+  --cyan: #8cc6e0;
+
+  --grey: #646a6e;        /* Back / Next */
+  --grey-line: #8c9296;
+
+  --dim: #6a7078;       /* disabled text */
+  --shade: rgba(8, 9, 10, .94);
+  --font: Tahoma, Verdana, Geneva, "DejaVu Sans", sans-serif;
+  --side-w: 176px;
+}

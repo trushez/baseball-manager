@@ -1,0 +1,502 @@
+/* Phone layout (up to 700 px wide): bottom menu bar, sheets for sub-menus, bigger touch targets.
+   Loaded last so it only overrides; nothing here applies on a desktop window. */
+/* extras for the phone's back button and the mail view; hidden on a desktop */
+.cm-mback, .inbox-nav { display: none; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+button, .cm-tab, select, input, [role="button"] { touch-action: manipulation; }
+
+@media (max-width: 700px) {
+  body { font-size: 14px; padding-bottom: env(safe-area-inset-bottom); }
+  .cm-app { display: block; min-height: 100vh; min-height: 100dvh; padding-bottom: calc(54px + env(safe-area-inset-bottom)); }
+
+  /* the menu becomes a bar along the bottom: date first, then the menu items, scrolling sideways */
+  .cm-side { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; border: 0; border-top: 2px solid var(--yellow); padding-bottom: env(safe-area-inset-bottom); background: var(--side); }
+  .cm-side-in { flex-direction: row; align-items: stretch; height: 54px; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .cm-side-in::-webkit-scrollbar { display: none; }
+  .cm-datebox { margin: 0; border: 0; border-right: 1px solid var(--side-line); padding: 4px 10px; display: flex; flex-direction: column; justify-content: center; font-size: 12px; white-space: nowrap; }
+  .cm-datebox .big { font-size: 15px; }
+  .cm-sidebtn { flex: 0 0 auto; white-space: nowrap; min-width: 76px; max-height: none; padding: 6px 14px; font-size: 14px; }
+  .cm-sidebtn.big { flex: 0 0 auto; white-space: nowrap; min-width: 120px; max-height: none; font-size: 15px; border: 0; border-right: 1px solid var(--yellow); background: var(--side-hover); }
+  .cm-sidebtn.big small { display: block; font-size: 10px; }
+  .cm-sidearrow { display: none; }
+
+  /* sub-menus rise from the bar as a sheet */
+  .cm-popout.sheet { left: 0; right: 0; top: auto; max-height: 62vh; overflow-y: auto; border-width: 2px 0 0; z-index: 140; display: grid; grid-template-columns: 1fr 1fr; }
+  .cm-popout.sheet .cm-popitem { padding: 14px 16px; font-size: 16px; border-right: 1px solid var(--side-line); }
+
+  .cm-main { padding: 6px; gap: 6px; min-height: 0; }
+  .cm-backnext { bottom: calc(54px + env(safe-area-inset-bottom)); }
+  .cm-big { min-height: 44px; font-size: 16px; }
+
+  /* touch targets */
+  .cm-tab, .cm-btn, .grp-btn, button.depth-chip, .cm-popitem { min-height: 40px; }
+  .cm-tab { font-size: 13px; }
+  select, input[type="text"], input[type="search"], input[type="number"], input:not([type]) { min-height: 40px; font-size: 16px; } /* 16px stops iOS zooming into fields */
+  input[type="checkbox"] { width: 20px; height: 20px; }
+  .cm-tbl td, .cm-tbl th { padding-top: 7px; padding-bottom: 7px; }
+
+  /* wide tables scroll inside their panel instead of widening the page */
+  .cm-panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .cm-tbl { min-width: max-content; }
+  .cm-tbl td:first-child, .cm-tbl th:first-child { position: sticky; left: 0; background: var(--panel); z-index: 1; }
+
+  .cm-title { position: sticky; top: 0; z-index: 30; }
+  .toast { bottom: calc(56px + env(safe-area-inset-bottom)); max-width: calc(100vw - 16px); font-size: 14px; padding: 8px 12px; }
+}
+
+/* tablets: keep the sidebar but make it touch friendly */
+@media (min-width: 701px) and (max-width: 1100px) and (pointer: coarse) {
+  .cm-sidebtn, .cm-tab, .cm-btn, .cm-popitem { min-height: 44px; }
+  .cm-popitem { padding: 12px 16px; font-size: 16px; }
+}
+
+/* ---------- second pass: less chrome, more game ---------- */
+@media (max-width: 700px) {
+  .cm-app { padding-bottom: calc(46px + env(safe-area-inset-bottom)); }
+  .cm-side-in { height: 46px; }
+  .cm-mback { display: flex; flex: 0 0 auto; min-width: 44px; width: 44px; padding: 0; font-size: 28px; line-height: 1; align-items: center; border: 0; border-right: 1px solid var(--side-line); color: var(--yellow); }
+  .cm-mback:disabled { color: var(--dim); }
+  .cm-datebox { padding: 2px 8px; font-size: 11px; line-height: 1.15; }
+  .cm-datebox .big { font-size: 13px; display: inline; }
+  .cm-sidebtn { min-width: 0; padding: 4px 12px; font-size: 13.5px; }
+  .cm-sidebtn.big { min-width: 0; padding: 4px 14px; font-size: 14px; }
+  .cm-sidebtn.big small { display: none; }
+  .cm-popout.sheet { bottom: calc(46px + env(safe-area-inset-bottom)) !important; }
+
+  /* Back and Next live in the bottom bar; the big pair returns only in a match, where Continue is needed */
+  .cm-backnext { display: none; }
+  .cm-backnext.cm-locked { display: grid; bottom: calc(46px + env(safe-area-inset-bottom)); }
+  .cm-big { min-height: 40px; font-size: 15px; }
+
+  .cm-main { padding: 4px; gap: 4px; }
+  .cm-title { min-height: 34px; padding: 5px 8px; font-size: 16px; }
+  .cm-panel { margin: 0; }
+
+  /* tab rows become one scrolling strip instead of stacked blocks */
+  .cm-tabs, .cm-tabs-small { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 4px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .cm-tabs::-webkit-scrollbar { display: none; }
+  .cm-tab { flex: 0 0 auto; min-height: 36px; padding: 6px 12px; font-size: 13px; white-space: nowrap; scroll-snap-align: start; }
+  .cm-tabs-small .cm-tab { padding: 5px 10px; font-size: 12.5px; min-height: 34px; }
+
+  /* squads: hitters, then pitchers, each a tight row */
+  .sq-bar, .sq-head, .sq-vs .cm-s { display: none; }
+  .sq-cols.full { padding: 0 2px; gap: 10px 0; }
+  .sq-row.full { grid-template-columns: 28px 16px minmax(0, 1fr) 50px auto; gap: 3px; font-size: 13px; min-height: 30px; }
+  .sq-figs .sq-fig { min-width: 33px; width: 33px; font-size: 12.5px; }
+  .sq-sub { position: sticky; top: 34px; z-index: 2; background: var(--panel); padding: 4px 6px; font-weight: bold; color: var(--yellow); }
+  .grp-seg { display: flex; gap: 4px; padding: 4px; }
+  .grp-seg .cm-s { display: none; }
+  .grp-seg .grp-btn { flex: 1 1 0; }
+  .squad-count { font-size: 12px; padding: 2px 6px; }
+
+  /* the inbox: the list on top, the open message below it, both always in view */
+  .inbox-find { flex-wrap: nowrap; gap: 6px; padding: 4px 6px; }
+  .inbox-search { width: auto; flex: 1 1 auto; min-width: 0; }
+  .inbox-find .inbox-bar { flex: 0 0 auto; margin: 0; gap: 4px; }
+  .inbox-bar .cm-btn { min-height: 36px; padding: 4px 8px; font-size: 12.5px; }
+  .stop-note { font-size: 12.5px; padding: 4px 8px; }
+  .inbox-offer .cm-panel.grow.inbox { grid-template-rows: minmax(88px, 24%) auto minmax(0, 1fr); }
+  .cm-panel.grow.inbox { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(88px, 30%) auto minmax(0, 1fr); height: calc(100dvh - 160px); min-height: 380px; overflow: hidden; }
+  .inbox-list { border-bottom: 2px solid var(--line); overflow-y: auto; min-height: 0; }
+  .inbox-row { grid-template-columns: 74px minmax(0, 1fr); padding: 6px 8px; border-bottom: 1px solid var(--line); gap: 6px; }
+  .inbox-row .pick, .inbox-row .cat { display: none; }
+  .inbox-row .when { font-size: 11.5px; color: var(--soft); }
+  .inbox-row .t { font-size: 14px; }
+  .inbox-scroll { overflow-y: auto; padding: 8px 10px; }
+  .inbox-scroll .cm-h { font-size: 17px; }
+  .inbox-body { font-size: 15.5px; }
+  .inbox-links { padding: 8px 0; }
+  .inbox-links .cm-btn { flex: 1 1 140px; }
+}
+
+@media (max-width: 700px) {
+  /* squad rows: number, slot, tag, name, figures. The positions column goes; they show on the profile and in the lineup slot. */
+  .sq-row.full, .sq-row.full.ord { grid-template-columns: 18px 30px 24px minmax(0, 1fr) auto; }
+  .sq-row.full:not(.ord) { grid-template-columns: 30px 24px minmax(0, 1fr) auto; }
+  .sq-row.full .sq-tag { font-size: 9px; min-height: 16px; line-height: 16px; padding: 0; overflow: hidden; }
+  .sq-row.full .sq-pos { display: none; }
+  .sq-row.full .sq-name .pl, .sq-row.full .sq-name a { font-size: 14px; }
+  .sq-figs .sq-fig { min-width: 36px; width: 36px; }
+  .quick-links, .sq-posrow { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; min-height: 0; scrollbar-width: none; gap: 4px; padding: 3px 4px; }
+  .quick-links .cm-btn, .sq-posrow .cm-btn { flex: 0 0 auto; min-height: 34px; }
+  .squad-count { display: none; }
+}
+
+@media (max-width: 700px) {
+  .depth-strip { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 4px; padding: 3px 4px; scrollbar-width: none; align-items: center; }
+  .depth-strip .depth-chip { flex: 0 0 auto; min-height: 32px; }
+  .depth-lab { flex: 0 0 auto; font-size: 11px; }
+}
+
+/* wide tables become cards on a phone (js/ui/mobile.js adds .m-cards): no sideways scrolling */
+@media (max-width: 700px) {
+  .cm-tbl.m-cards { min-width: 0; width: 100%; display: block; }
+  .cm-tbl.m-cards thead { display: none; }
+  .cm-tbl.m-cards tbody { display: block; }
+  .cm-tbl.m-cards tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 14px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  .cm-tbl.m-cards td { display: block; padding: 0; min-width: 0; text-align: left; font-size: 13px; line-height: 1.25; overflow-wrap: anywhere; white-space: normal; position: static; background: none; border: 0; }
+  .cm-tbl.m-cards td::before { content: attr(data-label); display: block; font-size: 11px; color: var(--soft); font-weight: normal; text-transform: none; }
+  .cm-tbl.m-cards td:first-child { grid-column: 1 / -1; font-size: 15px; font-weight: bold; }
+  .cm-tbl.m-cards td:first-child::before, .cm-tbl.m-cards td[colspan]::before { display: none; }
+  .cm-tbl.m-cards td[colspan] { grid-column: 1 / -1; }
+  .cm-tbl.m-cards td:empty { visibility: hidden; }
+  .cm-panel:has(.m-cards) { overflow-x: hidden; }
+  .m-sort { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-bottom: 1px solid var(--line); }
+  .m-sort select { flex: 1 1 auto; min-width: 0; }
+}
+
+@media (max-width: 700px) {
+  .tx-tabs { flex-wrap: nowrap !important; overflow-x: auto; padding: 0 !important; scrollbar-width: none; }
+  .tx-tabs .cm-btn { flex: 0 0 auto; white-space: nowrap; margin-left: 0 !important; }
+  .tx-area { height: calc(100dvh - 150px); min-height: 300px; }
+  .of-block { margin: 6px 0; padding: 6px 8px 8px; }
+  .of-cards { grid-template-columns: minmax(0, 1fr); }
+  .of-head { font-size: 16px; }
+  .of-btns .cm-btn { min-height: 40px; }
+}
+
+
+/* ---------- third pass: top bar, bottom bar, drop-down menus ---------- */
+.m-top, .m-bottom, .m-menu { display: none; }
+@media (max-width: 700px) {
+  .cm-side { display: none; }
+  .cm-backnext, .cm-backnext.cm-locked { display: none; }
+  .cm-app { padding-top: calc(42px + env(safe-area-inset-top)); padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+
+  .m-top { position: fixed; top: 0; left: 0; right: 0; z-index: 90; display: grid; grid-template-columns: 1fr 1fr auto; align-items: stretch; gap: 0;
+    height: calc(42px + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top); background: var(--side); border-bottom: 2px solid var(--yellow); }
+  .m-top button { font-size: 16px; font-weight: bold; color: var(--white); background: none; border: 0; border-right: 1px solid var(--side-line); min-height: 0; }
+  .m-top .m-back { color: var(--yellow); text-align: left; padding-left: 14px; }
+  .m-top button:disabled { color: var(--dim); }
+  .m-top .m-menubtn.hl { color: var(--yellow); }
+  .m-top .m-menubtn[aria-expanded="true"] { background: var(--side-hover); color: var(--yellow); }
+  .m-date { display: flex; align-items: center; padding: 0 12px; font-size: 11.5px; line-height: 1.15; text-align: center; color: var(--yellow); font-weight: bold; }
+
+  .m-bottom { position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0;
+    height: calc(56px + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); background: var(--side); border-top: 2px solid var(--yellow); }
+  .m-bottom .m-btn { font-size: 16px; font-weight: bold; color: var(--white); background: none; border: 0; border-right: 1px solid var(--side-line); display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.15; }
+  .m-bottom .m-btn small { font-size: 11px; font-weight: normal; color: var(--soft); }
+  .m-bottom .m-btn.main { font-size: 18px; background: var(--side-hover); color: var(--yellow); grid-column: span 2; }
+  .m-bottom .m-btn.hl { color: var(--yellow); }
+  .m-bottom .m-btn:disabled { color: var(--dim); }
+
+  .m-menu { position: fixed; top: calc(42px + env(safe-area-inset-top)); left: 0; right: 0; z-index: 85; display: grid; grid-template-columns: 1fr 1fr; background: var(--side); border-bottom: 2px solid var(--yellow); box-shadow: 0 10px 24px rgba(0, 0, 0, .55); max-height: calc(100dvh - 42px - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); overflow-y: auto; }
+  .m-menu[hidden] { display: none; }
+  .m-item { display: flex; flex-direction: column; justify-content: center; position: relative; min-height: 56px; padding: 8px 14px; text-align: left; font-size: 16px; font-weight: bold; color: var(--white); background: none; border: 0; border-bottom: 1px solid var(--side-line); border-right: 1px solid var(--side-line); }
+  .m-item small { font-size: 11.5px; font-weight: normal; color: var(--soft); }
+  .m-item.on { color: var(--yellow); background: var(--side-hover); }
+  .m-item.hl { color: var(--yellow); }
+  .m-item:disabled { color: var(--dim); }
+  .m-item .m-more { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--soft); font-size: 22px; }
+  .m-item.m-head { grid-column: 1 / -1; color: var(--yellow); background: var(--side-hover); min-height: 48px; }
+
+  /* tab rows and filters collapse into drop-downs (js/ui/mobile.js) */
+  .m-src { display: none !important; }
+  .m-dropbar { display: flex; gap: 4px; padding: 4px; }
+  .m-drop { flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 42px; padding: 6px 12px; font-size: 15px; font-weight: bold; text-align: left; background: var(--tab); border: 1px solid var(--yellow); color: var(--white); }
+  .m-drop span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .m-drop b { color: var(--yellow); }
+  .m-pop { position: fixed; left: 4px; right: 4px; z-index: 130; display: grid; grid-template-columns: 1fr 1fr; background: var(--side); border: 2px solid var(--yellow); box-shadow: 0 10px 24px rgba(0, 0, 0, .6); max-height: calc(100dvh - 130px); overflow-y: auto; }
+  .m-pop-item { min-height: 48px; padding: 8px 12px; text-align: left; font-size: 15px; font-weight: bold; color: var(--white); background: none; border: 0; border-bottom: 1px solid var(--side-line); border-right: 1px solid var(--side-line); }
+  .m-pop-item.on { color: var(--yellow); background: var(--side-hover); }
+  .m-pop-item:disabled { color: var(--dim); }
+  .m-pop-head { grid-column: 1 / -1; padding: 6px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); background: var(--panel); }
+
+  .cm-title { position: static; }
+  .sq-sub, .m-sort { top: 42px; }
+  .toast { bottom: calc(64px + env(safe-area-inset-bottom)); }
+  .cm-popout { display: none; }
+}
+
+/* ---------- overflow sweep: columns stack and nothing is wider than the screen ---------- */
+@media (max-width: 700px) {
+  .neg-two { grid-template-columns: minmax(0, 1fr); }
+  .neg-row { flex-wrap: wrap; gap: 4px 8px; }
+  .cm-main, .cm-main > *, .cm-panel, .tx-body, .tx-area { min-width: 0; max-width: 100%; }
+  .cm-main { overflow-x: clip; }
+}
+
+@media (max-width: 700px) {
+  .cm-main .cm-pad, .cm-main .filters, .cm-main .btnrow, .cm-main .inbox-links { flex-wrap: wrap !important; min-width: 0; }
+  .cm-drop, .cm-drop.wide { min-width: 0; max-width: 100%; flex: 1 1 130px; }
+  .cm-main select, .cm-main .cm-sel { min-width: 0; max-width: 100%; }
+  .cm-main input { min-width: 0; max-width: 100%; }
+  .cm-main button, .cm-main .cm-btn { max-width: 100%; }
+  .cm-main img, .cm-main canvas, .cm-main svg { max-width: 100%; height: auto; }
+  .cm-main pre, .cm-main .cm-tblwrap { max-width: 100%; overflow-x: auto; }
+}
+
+/* the player's Action button was hidden on phones by an older rule: show it, on the name bar's right */
+@media (max-width: 700px) {
+  .cm-title.pp-name { position: relative; padding-right: 96px; }
+  /* centred with margins, not a transform: the pressed look moves a button by 1px with a transform of its own, which made it jump */
+  .cm-title .act { display: block; position: absolute; right: 6px; top: 0; bottom: 0; margin: auto 0; height: 36px; min-height: 36px; padding: 4px 10px; font-size: 14px; font-weight: bold; z-index: 5; }
+  .cm-title .cm-menu { position: absolute; left: 0; right: 0; top: 100%; z-index: 120; display: grid; grid-template-columns: 1fr 1fr; max-height: 60dvh; overflow-y: auto; background: var(--side); border: 2px solid var(--yellow); }
+  .cm-title .cm-menu[hidden] { display: none; }
+  .cm-title .cm-menu button { min-height: 46px; font-size: 15px; font-weight: bold; border-right: 1px solid var(--line); }
+}
+
+/* player profile on a phone: ratings in two small columns, season lines one per row with the key figures only */
+@media (max-width: 700px) {
+  .pp-name .nm { font-size: 20px; }
+  .pp-born { font-size: 13px; padding: 3px 6px 0; }
+  .pp-posline { font-size: 13px; padding: 2px 6px 0; }
+  .pp-poschips { gap: 3px; }
+  .pp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(var(--r2, 18), auto); grid-auto-flow: column; gap: 0 10px; padding: 2px 6px; }
+  .pp-row { font-size: 12px; padding: 1px 3px; line-height: 1.3; gap: 4px; }
+  .pp-row .v .a20 { font-size: 12.5px; }
+  .pp-sec, .pp-note, .pp-hon { font-size: 11px; padding: 2px 4px 0; }
+  .pp-foot { padding: 2px 6px; gap: 6px; flex-wrap: wrap; flex-direction: column; align-items: stretch; }
+  .pp-foot > * { min-width: 0; width: 100%; }
+
+  .pp-stats .cm-tbl { min-width: 0; width: 100%; table-layout: fixed; }
+  .pp-stats .cm-tbl th, .pp-stats .cm-tbl td { font-size: 12px; padding: 3px 1px; white-space: nowrap; text-align: right; }
+  .pp-stats .cm-tbl th:first-child, .pp-stats .cm-tbl td:first-child { width: 30%; text-align: left; padding-left: 4px; position: static; white-space: normal; line-height: 1.15; overflow-wrap: anywhere; }
+  /* pitchers: show IP ERA WHIP K/9 W-L SV */
+  .pp-stats .cm-tbl.pit :is(th, td):is(:nth-child(2), :nth-child(3), :nth-child(6), :nth-child(9), :nth-child(12)) { display: none; }
+  /* hitters: show AVG OBP SLG HR RBI SB */
+  .pp-stats .cm-tbl.bat :is(th, td):is(:nth-child(2), :nth-child(3), :nth-child(10), :nth-child(11), :nth-child(12)) { display: none; }
+}
+@media (max-width: 700px) {
+  .ph-hide:not(:has(.grievance)) { display: none; }
+  .pp-row.pp-char { display: none; }
+  .pp-poschips { padding: 2px 6px; justify-content: center; flex-wrap: wrap; }
+  .pp-poschip { font-size: 11.5px; padding: 1px 5px; }
+}
+
+/* the day-by-day newspaper: its footer wraps instead of running off the screen */
+@media (max-width: 700px) {
+  .paper { width: calc(100vw - 16px); }
+  .paper-head { padding: 6px 10px; flex-wrap: wrap; }
+  .paper .masthead { font-size: 20px; }
+  .paper-foot { flex-wrap: wrap; gap: 6px; padding: 6px 8px; }
+  .paper-foot .pace { flex: 1 1 100%; justify-content: space-between; }
+  .paper-foot .pace .cm-btn { flex: 1 1 0; min-height: 36px; padding: 4px 6px; }
+  .paper-foot .hint { display: none; }
+  .paper-foot > .cm-btn { flex: 1 1 100%; min-height: 40px; margin: 0; }
+  .pp-stats .cm-tbl tbody tr:nth-child(n+5) { display: none; }
+  .pp-stats > :not(.cm-tblwrap) { display: none; }
+}
+@media (max-width: 700px) { .pp-row { padding-top: 0; padding-bottom: 0; } .pp-stats .cm-tbl th, .pp-stats .cm-tbl td { padding-top: 2px; padding-bottom: 2px; } }
+@media (max-width: 700px) {
+  .stop-note { display: none; }
+  .cm-tbl.msg-tbl { min-width: 0; width: 100%; table-layout: auto; }
+  .msg-tbl th, .msg-tbl td { font-size: 12.5px; padding: 4px 3px; white-space: normal; position: static; }
+  .inbox-scroll { overflow-x: hidden; }
+}
+
+/* free agents: one line per player (name, position, age, asking figure, Negotiate) */
+@media (max-width: 700px) {
+  .cm-tbl.fa-tbl { min-width: 0; width: 100%; table-layout: auto; }
+  .fa-tbl :is(th, td):is(:nth-child(4), :nth-child(6), :nth-child(7)) { display: none; }
+  .fa-tbl th, .fa-tbl td { font-size: 12.5px; padding: 3px 3px; white-space: nowrap; position: static; }
+  .fa-tbl td:first-child { max-width: 38vw; overflow: hidden; text-overflow: ellipsis; }
+  .fa-tbl .cm-btn { min-height: 30px; padding: 2px 8px; font-size: 12px; }
+  .fa-tbl td[colspan] { white-space: normal; }
+}
+/* the transfer budget note rides in the title bar instead of floating over the list */
+@media (max-width: 700px) {
+  .cm-title:not(.pp-name) .act { position: static; transform: none; min-height: 0; padding: 0; font-size: 12px; margin-left: auto; text-align: right; }
+}
+
+/* every wide table is one line per row (js/ui/mobile.js keeps the columns that fit) */
+@media (max-width: 700px) {
+  .cm-tbl.m-fit { min-width: 0; width: 100%; max-width: 100%; }
+  .cm-tbl.m-fit th, .cm-tbl.m-fit td { font-size: 12px; padding: 3px 4px; white-space: nowrap; position: static; }
+  /* headings may break between words (two lines at most); the figures under them never wrap */
+  .cm-tbl.m-fit th { white-space: normal; line-height: 1.15; vertical-align: bottom; }
+  .cm-tbl.m-measure { width: min-content !important; max-width: none !important; table-layout: auto; }
+  .cm-tbl.m-measure th { white-space: normal; }
+  .cm-tbl.m-fit td.m-first { max-width: 45vw; overflow: hidden; text-overflow: ellipsis; }
+  .cm-tbl.m-fit .m-h { display: none; }
+  .cm-tbl.m-fit td.m-wrap { white-space: normal; text-align: left; }
+  .m-clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; white-space: normal; line-height: 1.25; }
+  .cm-tbl.m-fit .m-picked { display: none; }
+  .cm-tbl.m-fit .m-pick { white-space: nowrap; }
+  .cm-tbl.m-kv { min-width: 0; width: 100%; }
+  .cm-tbl.m-kv td { text-align: left; }
+  .cm-tbl.m-kv td:last-child:nth-child(3) { text-align: right; }
+  .cm-tbl.m-kv th, .cm-tbl.m-kv td { font-size: 13px; padding: 4px 6px; white-space: normal; vertical-align: top; }
+  .cm-tbl.m-kv td:first-child { width: 38%; }
+  .cm-tbl.m-fit .cm-btn { min-height: 28px; padding: 2px 8px; font-size: 12px; }
+  .cm-panel:has(.m-fit) { overflow-x: hidden; }
+}
+@media (max-width: 700px) {
+  .cm-tbl.m-fit td.m-first { white-space: nowrap; }
+  .cm-main span.cm-s { white-space: normal; overflow-wrap: anywhere; }
+}
+/* contract talks: the persuasion lines ("Promise him an everyday role" and the rest) are left out on a phone */
+@media (max-width: 700px) { .neg-lines { display: none; } }
+@media (max-width: 700px) { .cm-dropitem { white-space: nowrap; padding: 10px 12px; font-size: 14px; } .cm-droplist { max-height: 60dvh; } }
+
+/* ---------- the live match on a phone: the overview fits one screen, commentary keeps its size ---------- */
+@media (max-width: 700px) {
+  .mx-venue, .mx-infoline, .mx-scorers .a, .mx-scorers .h, .mx-facts { display: none; }
+  .mx-ov { min-height: 0; gap: 6px; padding: 4px 8px 6px; }
+  .mx-state { font-size: 15px; }
+  .mx-scorers { display: block; padding: 0; border: 0; }
+  .mx-sit { justify-content: center; gap: 18px; padding: 4px 10px; }
+  .mx-count { gap: 3px; }
+  .mx-crow { grid-template-columns: 56px auto; gap: 6px; }
+  .mx-crow .lbl { font-size: 11px; }
+  .mx-crow .pips { gap: 4px; }
+  .mx-pip { width: 13px; height: 13px; border-width: 1.5px; }
+  .mx-diamond { width: 78px; height: 72px; }
+  .mx-mid { gap: 6px; padding: 0; justify-content: flex-start; }
+  .mx-comm { height: 104px; padding: 6px 12px; }
+  .mx-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .mx-card { padding: 4px 6px 5px; border-top-width: 3px; }
+  .mx-card .hd { font-size: 10px; }
+  .mx-card .nm, .mx-card .nm .pl { font-size: 14px; }
+  .mx-card .nm { padding: 1px 0 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mx-card .nm .hand { font-size: 11px; display: block; line-height: 1.1; margin-top: -1px; }
+  .mx-card .kv { grid-template-columns: 44px minmax(0, 1fr); gap: 4px; font-size: 11.5px; padding: 1px 0; }
+  .mx-card .kv .v.big { font-size: 13px; }
+  .mx-matchup { font-size: 12px; }
+  .mx-foot { padding-top: 6px; gap: 4px; }
+  .mx-wp { grid-template-columns: 70px minmax(0, 1fr); }
+  .mx-wp .lbl, .mx-wp .bar i { font-size: 11px; }
+  .mx-wp .bar { height: 18px; }
+  .mx-head { gap: 4px; }
+}
+@media (max-width: 700px) {
+  .mx-diamond { width: 66px; height: 60px; }
+  .mx-card .kv { font-size: 11px; }
+  .mx-card .kv:nth-of-type(n+5) { display: none; }
+  .mx-wp { margin-top: 0; }
+}
+@media (max-width: 700px) { .mx-card .kv:nth-of-type(n+5) { display: grid; } .mx-comm { height: 104px; } }
+
+/* ---------- lean phone: no explanatory text, no grey on buttons ---------- */
+@media (max-width: 700px) {
+  /* an empty list still says it is empty (cm-empty): only explanations go */
+  .cm-main :not(.inbox-body):not(.inbox-scroll) > p.cm-s:not(.cm-empty), .cm-main p.cm-sub:not(.cm-empty), .cm-main .cm-pad > .cm-s:only-child:not(span):not(.cm-empty),
+  .cm-main .pp-note, .cm-main .stop-note, .cm-main .hint, .cm-main .cm-note, .cm-main .of-note { display: none; }
+  /* button text is white (or the yellow highlight), never grey; a button that cannot be used is dimmed, not greyed */
+  .m-top button, .m-bottom .m-btn, .m-item, .m-drop, .m-pop-item, .cm-btn, .cm-tab, .cm-dropitem, .grp-btn, .depth-chip { color: var(--white); }
+  .m-top .m-back, .m-top .m-menubtn.hl, .m-bottom .m-btn.main, .m-bottom .m-btn.hl, .m-item.hl, .m-item.on, .m-pop-item.on, .cm-btn.go { color: var(--yellow); }
+  .m-top button:disabled, .m-bottom .m-btn:disabled, .m-item:disabled, .m-pop-item:disabled, .cm-btn:disabled { color: var(--white); opacity: .45; }
+  .m-bottom .m-btn small, .m-item small { color: var(--white); opacity: .75; }
+  .m-date { color: var(--white); }
+}
+@media (max-width: 700px) {
+  .m-top button, .m-bottom .m-btn, .m-item, .m-drop, .m-pop-item { color: #fff !important; }
+  .m-top .m-back:not(:disabled), .m-bottom .m-btn.main, .m-bottom .m-btn.hl, .m-item.hl, .m-item.on, .m-pop-item.on { color: #ffd84d !important; }
+  .m-top .m-back:disabled { opacity: .3; }
+  .m-bottom .m-btn:not(.main) { color: #fff !important; }
+  .m-date { color: #fff !important; opacity: .85; }
+  .cm-btn, .cm-tab, .grp-btn, .depth-chip, .cm-dropitem { color: #fff; }
+}
+
+/* trade builder: everything one line wide, one under the other */
+@media (max-width: 700px) {
+  .tr-two { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .tr-two:last-child > .cm-panel:first-child { display: none; }
+  .cm-main span.cm-s[title] { display: none; }
+  .tr-who > div { display: none; }
+  .tr-who { white-space: nowrap; }
+  .tr-who .cm-s { font-size: 12px; }
+  .tr-val { padding-top: 3px; }
+  .tr-two .cm-h { font-size: 14px; padding: 4px 8px; }
+  .tr-two .btnrow, .tr-two + .cm-panel .btnrow { flex-wrap: nowrap !important; align-items: center; gap: 6px; padding: 4px 8px; }
+  .tr-two .btnrow .cm-btn { flex: 0 0 auto; padding: 2px 10px; }
+  .cm-panel.cm-pad[style*="flex"] { gap: 6px !important; padding: 4px 8px; }
+  .cm-panel.cm-pad[style*="flex"] > span.cm-s { display: none; }
+  .tr-talks { max-height: 84px; }
+  .tr-two:last-child .btnrow { flex-wrap: wrap !important; }
+  .tr-two:last-child .btnrow .cm-btn { flex: 1 1 0; }
+}
+@media (max-width: 700px) {
+  .cm-btn.go, .cm-btn.go:disabled { color: #fff !important; }
+  .tr-two .cm-tbl { width: 100%; }
+  .tr-who { max-width: 50vw; overflow: hidden; text-overflow: ellipsis; }
+}
+@media (max-width: 700px) {
+  .m-top .m-cont { text-align: left; padding-left: 12px; font-size: 15px; }
+  .m-top .m-cont:disabled { opacity: .45; }
+  .m-top .m-cont:not(:disabled) { color: #ffd84d !important; }
+}
+
+/* standings: one column of divisions that never grows past the screen; the tables inside drop columns to fit */
+@media (max-width: 700px) {
+  .st-grid { grid-template-columns: minmax(0, 1fr); }
+  .st-col { min-width: 0; overflow: hidden; }
+  .st-col.wide { margin-left: 0; margin-right: 0; }
+}
+
+/* ---------- dialogs on a phone: every button visible, two to a row ---------- */
+@media (max-width: 700px) {
+  .dlg-btns { justify-content: stretch; }
+  .dlg-btns .cm-btn { flex: 1 1 calc(50% - 8px); min-width: 0; white-space: normal; }
+  .err-report { font-size: 10px; }
+}
+
+/* ---------- the squad's Team view on a phone ---------- */
+@media (max-width: 700px) {
+  .sq-subnote { display: none; }
+  .sq-posrow.idle { justify-content: center; }
+  .sq-posrow.idle .cm-s { white-space: normal; text-align: center; font-size: 13px; }
+  .sq-row.full .sq-figs { gap: 2px; }
+  .sq-figs .sq-fig { min-width: 0; width: 38px; text-align: right; overflow: visible; }
+  .sq-colh .sq-fig { font-size: 11px; letter-spacing: -0.2px; }
+  .sq-cols.full > div { min-width: 0; }
+  /* the Team view's headings stay where they are (stuck, they were pushed down over the column names) */
+  .sq-sel .sq-sub { position: static; }
+  .sq-row.full .sq-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sq-row.full .sq-name .pl { display: inline; }
+}
+
+/* the assistant's plan: one short line and its button */
+.adv-short { display: none; }
+@media (max-width: 700px) {
+  .adv-long { display: none; }
+  .adv-short { display: inline; }
+  .advice .cm-h { display: flex; align-items: center; gap: 8px; font-size: 14px; white-space: nowrap; }
+  .advice .cm-h .cm-btn { font-size: 13px; min-height: 32px; padding: 2px 10px; }
+  .advice summary { list-style-position: inside; }
+}
+
+/* long values open on a tap; positions show the main one only */
+@media (max-width: 700px) {
+  .m-more { cursor: pointer; }
+  .m-more.m-open .m-clamp { -webkit-line-clamp: unset; display: block; }
+  .cm-tbl.m-fit th .m-clamp { line-height: 1.15; }
+  .cm-tbl .poscell .pc, .cm-tbl .poscell .cm-s { display: none; }
+}
+@media (max-width: 700px) {
+  /* a box holding only explanations, all hidden on a phone, is not shown empty */
+  .cm-main .cm-panel:has(> :nth-child(2)):has(> .cm-note, > p.cm-s:not(.cm-empty)):not(:has(> :not(.cm-note):not(p.cm-s:not(.cm-empty)):not(p.cm-sub:not(.cm-empty)))) { display: none; }
+}
+
+/* match stats: one line per figure, inside the panel */
+@media (max-width: 700px) {
+  .mx-stats { padding: 8px 6px; gap: 6px; }
+  .mx-st { grid-template-columns: 38px minmax(0, 1fr) 86px minmax(0, 1fr) 38px; gap: 5px; }
+  .mx-st .l { font-size: 13px; white-space: nowrap; }
+  .mx-st .v { font-size: 14px; }
+}
+@media (max-width: 700px) {
+  .cm-tbl.m-empty { min-width: 0; width: 100%; }
+  .cm-tbl.m-empty thead { display: none; }
+  .cm-tbl.m-empty td { white-space: normal; }
+}
+/* a message that is all a panel has to say ("The odds close when the regular season ends") is not an explanation */
+@media (max-width: 700px) {
+  .cm-main .cm-panel:not(.m-x):not(.m-y) > p.cm-s:only-child, .cm-main .cm-panel > p.cm-sub:only-child, .cm-main .cm-panel > .cm-note:only-child { display: block; }
+}
+/* moving money between budget lines: one choice to a line */
+.bmove-pair { display: inline-flex; align-items: center; gap: 8px; }
+@media (max-width: 700px) {
+  .bmove { display: grid !important; grid-template-columns: 1fr; gap: 6px !important; }
+  .bmove-pair > .cm-s { width: 40px; flex: none; }
+  .bmove-pair > :last-child { flex: 1 1 auto; min-width: 0; }
+}
+/* a player's name inside a two-line cell stays on one line (a button cannot break across lines and keep the clamp) */
+@media (max-width: 700px) { .m-clamp .pl { white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; } }
+/* the Team view's position chooser: the player's name on one line, the nine positions in one row under it */
+@media (max-width: 700px) {
+  .sq-posrow:not(.idle) { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 3px; overflow: visible; padding: 4px 2px; }
+  .sq-posrow:not(.idle) > .cm-s { grid-column: 1 / -1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13px; }
+  .sq-posrow:not(.idle) .cm-btn { min-width: 0; padding: 0; font-size: 13px; }
+  .sq-row.full .sq-name .pl { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom; }
+}

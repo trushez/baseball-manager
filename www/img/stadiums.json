@@ -1,0 +1,14 @@
+{
+ "note": "Photographs of major league ballparks, supplied by the game's author. They go behind the screens (before the historical photographs) and the title screen picks one each time the game starts.",
+ "photos": [
+  { "id": "toronto", "file": "img/title.jpg", "orient": "land", "title": true, "screens": ["stats", "league", "fixtures", "default"] },
+  { "id": "sf-day", "file": "img/stadiums/sf-day.jpg", "orient": "land", "title": true, "screens": ["club", "news", "default"] },
+  { "id": "pittsburgh", "file": "img/stadiums/pittsburgh.jpg", "orient": "land", "title": true, "screens": ["club", "news", "league", "default"] },
+  { "id": "texas", "file": "img/stadiums/texas.jpg", "orient": "land", "title": true, "screens": ["squad", "matchday", "match", "default"] },
+  { "id": "sacramento", "file": "img/stadiums/sacramento.jpg", "orient": "land", "screens": ["squad", "tactics", "profile", "default"] },
+  { "id": "stl-aerial", "file": "img/stadiums/stl-aerial.jpg", "orient": "port", "title": true, "screens": ["club", "stats", "fixtures", "default"] },
+  { "id": "stl-batter", "file": "img/stadiums/stl-batter.jpg", "orient": "port", "title": true, "screens": ["profile", "matchday", "match"] },
+  { "id": "tokyo", "file": "img/stadiums/tokyo.jpg", "orient": "port", "title": true, "screens": ["tactics", "matchday", "match"] },
+  { "id": "citi", "file": "img/stadiums/citi.jpg", "orient": "port", "title": true, "screens": ["profile", "tactics", "squad"] }
+ ]
+}

@@ -1,0 +1,382 @@
+{
+ "note": "Public domain photographs: published before 1929 and held by the Library of Congress with no known restrictions on publication. Fetched to game/img/bg/ by tools/fetch-photos.js.",
+ "photos": [
+  {
+   "id": "polo-1909",
+   "title": "Polo Grounds, view from Coogan's Bluff",
+   "year": 1909,
+   "source": "https://www.loc.gov/item/2014681586/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/01500/01591v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/01500/01591r.jpg"
+   ],
+   "screens": [
+    "club",
+    "league",
+    "default"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "polo-1911",
+   "title": "Polo Grounds, New York",
+   "year": 1911,
+   "source": "https://www.loc.gov/item/2014689023/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/09000/09032v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/09000/09032r.jpg"
+   ],
+   "screens": [
+    "club",
+    "league",
+    "default"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "polo-1923",
+   "title": "Polo Grounds, 1923",
+   "year": 1923,
+   "source": "https://www.loc.gov/item/2014715979/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35800/35829v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35800/35829r.jpg"
+   ],
+   "screens": [
+    "club",
+    "league",
+    "stats"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-1920",
+   "title": "Ebbets Field",
+   "year": 1920,
+   "source": "https://www.loc.gov/item/2014711600/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31445v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31445r.jpg"
+   ],
+   "screens": [
+    "club",
+    "league",
+    "default"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-1922",
+   "title": "Ebbets Field",
+   "year": 1922,
+   "source": "https://www.loc.gov/item/2014711606/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31451v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31451r.jpg"
+   ],
+   "screens": [
+    "club",
+    "stats",
+    "default"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "polo-bleachers-1911",
+   "title": "Polo Grounds bleachers, Phillies stand beneath",
+   "year": 1911,
+   "source": "https://www.loc.gov/item/2014689043/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/09000/09053v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/09000/09053r.jpg"
+   ],
+   "screens": [
+    "stats",
+    "league"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-outside-1920",
+   "title": "Outside Ebbets Field",
+   "year": 1920,
+   "source": "https://www.loc.gov/item/2014711594/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31439v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31439r.jpg"
+   ],
+   "screens": [
+    "fixtures",
+    "stats"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "polo-fans-1913",
+   "title": "Fans, Polo Grounds",
+   "year": 1913,
+   "source": "https://www.loc.gov/item/2014694458/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/14400/14488v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/14400/14488r.jpg"
+   ],
+   "screens": [
+    "news",
+    "default"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-crowd-1920",
+   "title": "Crowd, Ebbets Field, 10/5/20",
+   "year": 1920,
+   "source": "https://www.loc.gov/item/2014711430/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31200/31275v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31200/31275r.jpg"
+   ],
+   "screens": [
+    "news",
+    "fixtures"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-fans-1920",
+   "title": "Fans outside Ebbets Field",
+   "year": 1920,
+   "source": "https://www.loc.gov/item/2014711598/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31443v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/31400/31443r.jpg"
+   ],
+   "screens": [
+    "news",
+    "fixtures"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-cars-1916",
+   "title": "Autos parked at Ebbets Field",
+   "year": 1916,
+   "source": "https://www.loc.gov/item/2014702362/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/22400/22423v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/22400/22423r.jpg"
+   ],
+   "screens": [
+    "news"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ws-polo-1921a",
+   "title": "World Series at Polo Grounds",
+   "year": 1921,
+   "source": "https://www.loc.gov/item/2014713347/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/33100/33195v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/33100/33195r.jpg"
+   ],
+   "screens": [
+    "matchday",
+    "match"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ws-polo-1921b",
+   "title": "World Series at Polo Grounds",
+   "year": 1921,
+   "source": "https://www.loc.gov/item/2014713348/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/33100/33196v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/33100/33196r.jpg"
+   ],
+   "screens": [
+    "matchday",
+    "match"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ws-bleachers-1913",
+   "title": "Bleachers, World Series, Polo Grounds",
+   "year": 1913,
+   "source": "https://www.loc.gov/item/2014694421/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/14400/14450v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/14400/14450r.jpg"
+   ],
+   "screens": [
+    "matchday",
+    "news"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ws-polo-1913",
+   "title": "Polo Grounds during World Series game, 1913",
+   "year": 1913,
+   "source": "https://www.loc.gov/item/97518648/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/cph/3b10000/3b16000/3b16600/3b16684v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/cph/3b10000/3b16000/3b16600/3b16684r.jpg"
+   ],
+   "screens": [
+    "matchday",
+    "match",
+    "club"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division"
+  },
+  {
+   "id": "polo-1917",
+   "title": "Polo Grounds, 10/10/17",
+   "year": 1917,
+   "source": "https://www.loc.gov/item/2014705658/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/25400/25487v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/25400/25487r.jpg"
+   ],
+   "screens": [
+    "matchday",
+    "match"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ruth-yankee-stadium-1923",
+   "title": "Babe Ruth at the opening of Yankee Stadium",
+   "year": 1923,
+   "source": "https://www.loc.gov/item/2014715919/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35700/35768v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35700/35768r.jpg"
+   ],
+   "screens": [
+    "profile"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ruth-mascot-1922",
+   "title": "Babe Ruth and mascot",
+   "year": 1922,
+   "source": "https://www.loc.gov/item/2014715719/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35500/35568v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35500/35568r.jpg"
+   ],
+   "screens": [
+    "profile"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "kelly-polo-1912",
+   "title": "Billy Kelly at Polo Grounds",
+   "year": 1912,
+   "source": "https://www.loc.gov/item/2014691967/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/11700/11758v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/11700/11758r.jpg"
+   ],
+   "screens": [
+    "profile",
+    "tactics"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "yankees-1921",
+   "title": "Yankees at New Orleans, spring training",
+   "year": 1921,
+   "source": "https://www.loc.gov/item/91784619/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/cph/3c00000/3c03000/3c03700/3c03767v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/cph/3c00000/3c03000/3c03700/3c03767r.jpg"
+   ],
+   "screens": [
+    "squad",
+    "tactics"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division"
+  },
+  {
+   "id": "ruth-bentley-1923",
+   "title": "Babe Ruth and Jack Bentley in Giants uniforms",
+   "year": 1923,
+   "source": "https://www.loc.gov/item/2014691599/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/12000/12003v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/12000/12003r.jpg"
+   ],
+   "screens": [
+    "squad",
+    "profile"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-opening-1914",
+   "title": "Opening Day parade, Ebbets Field",
+   "year": 1914,
+   "source": "https://www.loc.gov/item/2014697466/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/17200/17204v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/17200/17204r.jpg"
+   ],
+   "screens": [
+    "squad",
+    "tactics"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ebbets-first-ball-1913",
+   "title": "Genevieve Ebbets throws the first ball at the opening of Ebbets Field",
+   "year": 1913,
+   "source": "https://www.loc.gov/item/2014692697/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/12600/12681v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/12600/12681r.jpg"
+   ],
+   "screens": [
+    "tactics",
+    "squad"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "ruth-harding-1923",
+   "title": "Babe Ruth shakes hands with President Harding at Yankee Stadium",
+   "year": 1923,
+   "source": "https://www.loc.gov/item/2014715994/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35800/35844v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/35800/35844r.jpg"
+   ],
+   "screens": [
+    "profile",
+    "news"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  },
+  {
+   "id": "telegraphers-1910",
+   "title": "100 telegraphers, Polo Grounds",
+   "year": 1910,
+   "source": "https://www.loc.gov/item/2014694464/",
+   "files": [
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/14400/14494v.jpg",
+    "https://tile.loc.gov/storage-services/service/pnp/ggbain/14400/14494r.jpg"
+   ],
+   "screens": [
+    "squad"
+   ],
+   "credit": "Library of Congress, Prints and Photographs Division, Bain News Service collection"
+  }
+ ]
+}

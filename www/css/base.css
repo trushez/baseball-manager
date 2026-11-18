@@ -1,0 +1,75 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+/* dark scrollbars: the default light bar showed as a bright strip against the photo at the window's right edge */
+html { color-scheme: dark; scrollbar-color: #4b515a rgba(14, 15, 17, .85); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(14, 15, 17, .85); }
+::-webkit-scrollbar-thumb { background: #4b515a; border-radius: 5px; border: 2px solid rgba(14, 15, 17, .85); }
+::-webkit-scrollbar-thumb:hover { background: #6a717b; }
+body { background: var(--page); color: var(--text); font-family: var(--font); font-size: 13px; line-height: 1.35; }
+button { font: inherit; color: inherit; }
+/* Gameday lesson: grid and flex children default to min-width:auto and push pages wider than the window. */
+.cm-app > *, .cm-main > *, .cm-tabs > *, .grid > * { min-width: 0; }
+canvas, img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 1px dotted var(--yellow); outline-offset: -3px; }
+
+/* ---------- shell: sidebar + main column ---------- */
+.cm-app { display: grid; grid-template-columns: var(--side-w) minmax(0, 1fr); min-height: 100vh; }
+
+.cm-side { background: var(--side); border-right: 2px solid var(--side-line); display: flex; flex-direction: column; }
+.cm-side-in { position: sticky; top: 0; display: flex; flex-direction: column; height: 100vh; }
+.cm-datebox {
+  margin: 6px; padding: 6px 4px; text-align: center; background: var(--page); border: 1px solid var(--side-line);
+  color: var(--yellow); font-weight: bold; line-height: 1.25;
+}
+.cm-datebox .big { display: block; font-size: 28px; line-height: 1.05; }
+.cm-arrows { display: grid; grid-template-columns: 1fr 1fr; margin: 0 6px 6px; gap: 4px; }
+.cm-arrow { background: none; border: 0; cursor: pointer; color: var(--yellow); font-size: 18px; font-weight: bold; padding: 2px; }
+.cm-arrow:disabled { color: var(--dim); cursor: default; }
+.cm-sidebtn {
+  display: flex; flex-direction: column; justify-content: center; align-items: center; /* centred in older engines too (the desktop app's) */ flex: 1 1 auto; max-height: 50px; width: 100%; padding: 4px 8px; text-align: center; cursor: pointer;
+  background: none; border: 0; border-top: 1px solid var(--side-line);
+  color: var(--white); font-weight: bold; font-size: 13.5px; line-height: 1.2;
+}
+.cm-sidebtn.big { flex: 1.6 1 auto; max-height: 78px; padding: 8px; font-size: 17px; background: var(--side-hover); border-top: 2px solid var(--yellow); border-bottom: 2px solid var(--yellow); }
+.cm-sidebtn.big small { font-size: 11.5px; margin-top: 2px; }
+.cm-sidebtn:hover:not(:disabled) { background: var(--side-hover); }
+.cm-sidebtn.hl { color: var(--yellow); }
+.cm-sidebtn.on { color: var(--yellow); background: var(--side-hover); }
+.cm-sidebtn:disabled { color: var(--dim); cursor: default; }
+.cm-sidebtn small { display: block; font-weight: normal; font-size: 10.5px; color: var(--soft); }
+
+.cm-main { display: flex; flex-direction: column; gap: 6px; padding: 8px; min-width: 0; width: 100%; min-height: 100vh; margin: 0 auto; }
+/* the screens fill the window; Game Options can keep them to a centred column instead */
+html.narrow .cm-main { max-width: 1180px; }
+/* the screen's main panel stretches so Back / Next sit at the foot of the window, as in CM */
+.cm-main .grow { flex: 1 1 auto; }
+
+/* narrow windows: sidebar becomes a strip across the top */
+@media (max-width: 700px) {
+  .cm-app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .cm-side { border-right: 0; border-bottom: 2px solid var(--side-line); }
+  .cm-side { min-width: 0; }
+  .cm-side-in { position: static; height: auto; flex-direction: row; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+  .cm-datebox { flex: 0 0 auto; margin: 4px; padding: 3px 8px; }
+  .cm-datebox .big { font-size: 20px; }
+  .cm-arrows { display: none; }
+  .cm-sidebtn.big { padding: 10px 14px; font-size: 15px; border-top: 0; border-bottom: 0; }
+  .cm-sidebtn { flex: 0 0 auto; width: auto; border-top: 0; border-left: 1px solid var(--side-line); padding: 8px 12px; white-space: nowrap; }
+  .cm-sidebtn small { display: none; }
+  .cm-main { padding: 4px; min-height: 0; }
+}
+
+/* the picture behind each screen (ui/backdrop.js), darkened so the text reads, as in CM */
+html.has-bg .cm-app { background-image: linear-gradient(color-mix(in srgb, var(--title) 62%, transparent), color-mix(in srgb, var(--page) 72%, transparent)), var(--bg); background-size: cover; background-position: center; background-attachment: fixed; }
+html.has-bg .cm-panel { background: color-mix(in srgb, var(--panel) 95%, transparent); }
+html.has-bg .cm-tbl thead th { background: color-mix(in srgb, var(--panel-2) 98%, transparent); }
+html.has-bg .cm-tab:not([aria-selected="true"]) { background: color-mix(in srgb, var(--tab) 92%, transparent); }
+
+/* the sidebar keeps its full-size buttons; on a short screen it scrolls on its own instead of stretching the page */
+@media (min-width: 901px) {
+  .cm-side { overflow: clip; }
+  .cm-side-in { max-height: 100vh; overflow-y: auto; scrollbar-width: none; }
+  .cm-side-in::-webkit-scrollbar { display: none; }
+}

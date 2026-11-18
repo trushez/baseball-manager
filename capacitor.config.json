@@ -1,0 +1,6 @@
+{
+  "appId": "com.rydergamestudios.baseballmanager",
+  "appName": "Baseball Manager",
+  "webDir": "www",
+  "android": { "backgroundColor": "#000000" }
+}

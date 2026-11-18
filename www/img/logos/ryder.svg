@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" role="img" aria-label="Ryder Game Studios">
+  <text x="207" y="102" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" letter-spacing="14" fill="#e9e6df">RYDER</text>
+  <line x1="150" y1="128" x2="250" y2="128" stroke="#e9e6df" stroke-width="1" opacity=".55"/>
+  <text x="204" y="156" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" letter-spacing="8" fill="#9aa3b2">GAME STUDIOS</text>
+</svg>

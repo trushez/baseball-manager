@@ -1,0 +1,36 @@
+# Builds the Android app (an installable .apk) from www/ every time something is pushed, or when started by hand
+# from the Actions tab. The file to install is in the run's Artifacts at the bottom of its page.
+name: Android app
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npx cap sync android
+      - name: Build the app
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+      - name: Name the file
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk "BaseballManager-$(node -p "require('./package.json').version").apk"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BaseballManager-android
+          path: BaseballManager-*.apk
+          retention-days: 30
