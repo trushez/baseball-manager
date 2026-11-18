@@ -39,6 +39,7 @@ const begin = async () => {
   await (await import('./season/newgame.js')).startCareer();
   const { inboxScreen } = await import('./ui/inbox-screen.js');
   nav.reset(inboxScreen());
+  import('./ui/tutorial.js').then((t) => t.offerTutorial()).catch(() => {});
 };
 const sets = await listSets('data/');
 nav.reset(startScreen(begin, sets));

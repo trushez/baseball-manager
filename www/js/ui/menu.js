@@ -59,6 +59,7 @@ export function clubMenu(here) {
   ];
   const options = [['General', 'general'], ['When Continue stops', 'stops'], ['Running the club', 'club'], ['News', 'news'], ['Save and load', 'saves'], ['Photographs', 'photos']]
     .map(([label, id]) => ({ label, onClick: async () => { const screen = (await import('./options-screen.js')).optionsScreen(id); if (here === 'options' && nav.replace) nav.replace(screen); else nav.push(screen); } }));
+  options.push({ label: 'How to Play', onClick: async () => (await import('./tutorial.js')).openTutorial() });
   options.push({ label: 'Manual', onClick: async () => { const screen = (await import('./manual-screen.js')).manualScreen(); if (here === 'options' && nav.replace) nav.replace(screen); else nav.push(screen); } });
   options.push({ label: 'Quit Game', onClick: async () => (await import('./app-guards.js')).quitGame() });
   const inGroup = (kids) => kids.some((k) => k.on);

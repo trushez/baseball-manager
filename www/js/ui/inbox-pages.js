@@ -6,6 +6,7 @@ const tx = (tab) => async () => (await import('./transfers-screen.js')).transfer
 const fx = (tab) => async () => (await import('./fixtures-screen.js')).fixturesScreen(tab);
 
 const PAGES = [
+  [/^How to Play$/, 'How to Play', async () => { (await import('./tutorial.js')).openTutorial('now'); return null; }],
   [/^Scouting: .* in |has finished in|has a hunch|retires|leaves for|take your head of analytics|hire /, 'Scouts', async () => (await import('./scouting-screen.js')).scoutingScreen()],
   [/Analytics|analytics/, 'Analytics', async () => (await import('./analytics-screen.js')).analyticsScreen()],
   [/Prospect rankings|Down on the farm/, 'Prospects', async () => (await import('./prospects-screen.js')).prospectsScreen()],
@@ -25,5 +26,5 @@ const PAGES = [
 /** The page button for a message, or null when its title matches none. */
 export function pageFor(m) {
   const hit = PAGES.find(([re]) => re.test(m.title || ''));
-  return hit ? { label: `Open ${hit[1]}`, open: async () => nav.push(await hit[2]()) } : null;
+  return hit ? { label: `Open ${hit[1]}`, open: async () => { const s = await hit[2](); if (s) nav.push(s); } } : null;
 }

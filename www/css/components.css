@@ -1216,3 +1216,23 @@ a, .plink { cursor: pointer; }
 @media (max-width: 1100px) { .leaders { grid-template-columns: repeat(3, minmax(0, 1fr)); min-height: 0; } }
 @media (max-width: 700px) { .leaders { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 1300px) { .sq-cols.full { grid-template-columns: minmax(0, 1fr); gap: 12px 0; } } /* a tablet: the lineup above the pitching staff, so the names have room */
+
+/* How to Play: the manual's two columns in a large box over the screen, above the title screen too */
+.tut-back { z-index: 9100; }
+.dlg.tut-dlg { width: min(1180px, 96vw); max-width: none; height: min(860px, 92vh); display: flex; flex-direction: column; }
+.tut-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tut-body { display: grid; grid-template-columns: 250px minmax(0, 1fr); flex: 1 1 auto; min-height: 0; }
+.tut-page .tut-lead { font-size: 16px; color: var(--muted, #8a93a1); font-style: italic; margin-top: -6px; }
+.tut-show { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; padding: 10px 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
+.tut-show .cm-s { margin-right: 4px; text-transform: uppercase; letter-spacing: 1.5px; font-size: 12px; }
+.tut-page .tut-note { font-size: 13px; margin-top: 16px; }
+.tut-chip { position: fixed; z-index: 150; right: 18px; bottom: 66px; display: flex; gap: 6px; padding: 6px; background: var(--side); border: 2px solid var(--yellow); box-shadow: 0 6px 20px rgba(0, 0, 0, .6); }
+@media (max-width: 760px) {
+  .tut-back { padding: 0; }
+  .dlg.tut-dlg { height: 100vh; height: 100dvh; width: 100vw; }
+  .tut-body { display: flex; flex-direction: column; }
+  .tut-body .man-toc { display: flex; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; border-right: 0; border-bottom: 1px solid var(--line); padding: 4px; gap: 4px; flex: 0 0 auto; }
+  .tut-body .man-ch { width: auto; flex: 0 0 auto; white-space: nowrap; padding: 6px 10px; border-left: 0; border-bottom: 3px solid transparent; }
+  .tut-body .man-ch.on { border-bottom-color: var(--yellow); }
+  .tut-body .man-page { padding: 12px 12px 20px; flex: 1 1 auto; min-height: 0; }
+}

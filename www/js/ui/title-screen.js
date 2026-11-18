@@ -36,6 +36,7 @@ export function titleScreen({ newGame }) {
         btn('New Game', 'Pick a club and take charge', () => { newGame(); close(); }),
         btn('Challenge', 'Harder starting positions', challenges),
         btn('Load Game', 'Saved games and imports', async () => { close(); nav.push((await import('./load-screen.js')).loadScreen()); }),
+        btn('How to Play', 'The rules, the money and what to do each turn', async () => { await (await import('./tutorial.js')).openTutorial(); box.querySelector('.title-btn')?.focus({ preventScroll: true }); }),
         // the desktop game can close itself; a browser tab cannot
         globalThis.bmDesktop ? btn('Quit', 'Close the game', () => globalThis.bmDesktop.confirmClose())
           : document.fullscreenEnabled && !globalThis.Capacitor ? btn('Full Screen', 'Hide the browser around the game', async () => (await import('./layout.js')).toggleWebFullscreen()) : null].filter(Boolean));

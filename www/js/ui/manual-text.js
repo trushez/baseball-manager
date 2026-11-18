@@ -8,6 +8,7 @@ export const MANUAL = [
       { h: 'What the game is', p: [
         'You are the general manager and the manager of a major league club at the same time. You build the roster, sign and trade players, set the lineups and the pitching staff, and decide how much of each game you want to run yourself. The owner judges you on results against the goals he sets each winter, and he can let you go.',
         'Everything you see is worked out from the players\' ratings and what happens on the field. Nothing is scripted, and the computer clubs play by the same rules you do.',
+        'If you are new to the game or to baseball, start with How to Play, on the title screen and under Game Options. Its short lessons cover what to do each time Continue stops, the rules on the field, the roster rules, contracts and the money, and how to build a squad; during a career it opens with a page on what your own club needs at that point of the year.',
       ] },
       { h: 'A new game', p: [
         'Choose New Game on the title screen, give your name and a playing background (it sets how much reputation you start with), pick a club and the data you want to play with. The game comes with a world of invented players; a data pack in the Data packs folder can hold another, such as real players and clubs. The game starts on 2 November, at the beginning of the winter, so the first thing you do is shape the roster for the season ahead.',

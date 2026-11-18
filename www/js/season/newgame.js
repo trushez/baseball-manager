@@ -49,4 +49,8 @@ export function startCareer({ quiet = false, settings = null, winter = true } = 
   for (const id of world.orgs.keys()) budget(id, 2027);
   if (!quiet) message({ cat: 'club', important: true, title: 'A letter from the owner: the 2027 budget', body: ownerLetter(game.orgId, 2027) });
   if (winter) startWinter();
+  if (!quiet) message({
+    cat: 'club', important: true, title: 'How to Play',
+    body: 'If you are new to the game, or to baseball, How to Play walks you through it in short lessons: what to do each time Continue stops, the rules on the field, the roster rules, how contracts work and why young players are cheap, how to build a squad within the budget, and what each part of the year asks of you. It opens with a page on your own club as it stands today. You will find it under Game Options at any time.',
+  });
 }
