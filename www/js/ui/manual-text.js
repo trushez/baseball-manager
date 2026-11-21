@@ -97,14 +97,14 @@ export const MANUAL = [
     id: 'players', title: 'Reading a player',
     sections: [
       { h: 'Ratings', p: [
-        'Players are rated on the scouts\' 20 to 80 scale, where 50 is an average major leaguer, 60 is a good regular, 70 is a star and 80 is the best in the game. Hitters have contact, power, gap power, eye, avoiding strikeouts and how they handle fastballs and breaking balls, along with speed, baserunning and fielding at each position. Pitchers have stuff, movement, control, velocity, stamina and a grade for each pitch they throw.',
+        'Every attribute is shown from 1 to 20 against the major leagues: about 12 or 13 is an average big leaguer, 16 and above (green) is very good, 19 or 20 is among the best in the game and 6 or below (red) is poor. Hitters have contact, power, gap power, eye, avoiding strikeouts and how they handle fastballs and breaking balls, along with speed, baserunning and fielding at each position. Pitchers have stuff, movement, control, velocity, stamina and a grade for each pitch they throw.',
         'Potential is never shown as a number. Your scouts describe it in words, and their reports can be wrong, the more so the weaker the scout. Players develop with age, playing time, coaching and their own make-up; most peak in their late twenties and decline in their thirties.',
       ] },
       { h: 'TBO9+ and TBA9-', p: [
         'Each player\'s headline figure is a measure of the bases he produces or allows. TBO9 is the bases a hitter produces in a game (singles, doubles, triples and home runs by their bases, plus walks and steals). TBA9 is the bases a pitcher allows per nine innings. TBO9+ and TBA9- set each against the league that season, so 100 is average; a TBO9+ of 120 is 20 per cent better than average, and for pitchers a lower TBA9- is better.',
       ] },
       { h: 'Value and form', p: [
-        'A player\'s value puts everything about him on one 20 to 80 scale, so a shortstop can be compared with a reliever. Clubs use it for trades, contracts and waiver claims. Form is how he has played over the last couple of weeks, shown on his page and mentioned by your assistant when it is worth knowing.',
+        'A player\'s value is what he is worth in a trade, shown in dollars in the Value column, so a shortstop can be compared with a reliever. Clubs use it for trades, contracts and waiver claims. Form is how he has played over the last couple of weeks, shown on his page and mentioned by your assistant when it is worth knowing.',
       ] },
     ],
   },

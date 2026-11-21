@@ -73,8 +73,10 @@ export const LESSONS = [
     id: 'numbers', title: 'Reading the numbers',
     lead: 'The ratings and statistics you will use to judge a player.',
     sections: [
-      { h: 'The 20 to 80 scale', p: [
-        'Every rating in the game is on the scouts\' 20 to 80 scale. A 50 is an average major leaguer, a 60 a good regular, a 70 a star and an 80 the best in the game. Most minor leaguers are in the 30s and 40s. A player\'s value puts everything about him into one figure on the same scale, so you can compare a shortstop with a relief pitcher. Potential is never a number: your scouts describe it in words, and a poor scout can be wrong.',
+      { h: 'Attributes from 1 to 20', p: [
+        'Every attribute is shown from 1 to 20, measured against the major leagues: about 12 or 13 is an average big leaguer, 16 and above (in green) is very good, 19 or 20 is among the best in the game, and 6 or below (in red) is poor. Most minor leaguers sit well below the big league average in most things, which is why they are in the minors. An arrow beside a figure shows it has gone up or down since spring training. A ? means none of your scouts has seen enough of him to judge it.',
+        'Judge a player on the attributes his job needs. For a hitter that is contact, power and eye, with speed and defence at his position; for a pitcher it is stuff, movement, control, velocity and, for a starter, stamina. A shortstop with 16 for defence and 10s with the bat is still a useful player; a first baseman with the same figures is not.',
+        'The Value column on the Squad screen is what a player is worth to your club in a trade, in dollars, so you can compare a shortstop with a relief pitcher. Potential is never a number: your scouts describe it in words, and a poor scout can be wrong.',
       ] },
       { h: 'Hitters', p: [
         'The batting average (AVG) is hits divided by at bats; .300 is very good and .220 is poor. The on-base percentage (OBP) counts walks as well and matters more, since a walk is nearly as good as a single; .340 is good. Slugging (SLG) weighs each hit by its bases, so it measures power, and OPS adds OBP and SLG together, with .800 good and .650 poor. Home runs (HR) and runs batted in (RBI) are the counting numbers people talk about. The game\'s own TBO9+ puts a hitter\'s output against the league, where 100 is average and 120 is 20 per cent better.',
